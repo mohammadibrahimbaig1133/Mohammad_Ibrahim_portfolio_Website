@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammad Ibrahim Baig- - Skills</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Enhanced Tech Card Styles - Same as Education Cards */
+        .tech-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .tech-card:hover::before {
+            left: 100%;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Icon Glow Effects */
+        .icon-glow-yellow {
+            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.6));
+        }
+        
+        .icon-glow-orange {
+            filter: drop-shadow(0 0 10px rgba(251, 146, 60, 0.6));
+        }
+        
+        .icon-glow-blue {
+            filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.6));
+        }
+        
+        .icon-glow-teal {
+            filter: drop-shadow(0 0 10px rgba(45, 212, 191, 0.6));
+        }
+        
+        .icon-glow-green {
+            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.6));
+        }
+        
+        .icon-glow-red {
+            filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.6));
+        }
+
+        /* Fade In Up Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+
+        .tech-icon {
+            transition: all 0.4s ease;
+        }
+
+        .tech-card:hover .tech-icon {
+            transform: scale(1.15) rotateY(360deg);
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+            border-radius: 3px;
+            transition: width 1s ease;
+            width: 0;
+        }
+
+        .tech-card:hover .skill-bar-fill {
+            width: 100% !important;
+        }
+
+        .category-tag {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.2));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .category-tag:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(96, 165, 250, 0.4));
+            transform: scale(1.05);
+        }
+
+        .tech-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        @media (min-width: 768px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        .tech-header {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* Enhanced Header Styles */
+        .header-glow {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .logo-pulse {
+            animation: logo-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logo-pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+            }
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.8));
+            }
+        }
+
+        .nav-item-hover {
+            transition: all 0.3s ease;
+        }
+
+        .nav-item-hover:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 20%;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(37, 99, 235, 0.4));
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        @keyframes float-rotate-1 {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(100px, -120px) scale(1.3) rotate(180deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate(0, 0) scale(1) rotate(360deg);
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes float-rotate-2 {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.6;
+            }
+            33% {
+                transform: translate(-80px, -80px) scale(1.5) rotate(120deg);
+                opacity: 0.4;
+            }
+            66% {
+                transform: translate(80px, 80px) scale(0.8) rotate(240deg);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(0, 0) scale(1) rotate(360deg);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes float-rotate-3 {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1) rotate(0deg);
+                opacity: 0.4;
+            }
+            25% {
+                transform: translateY(-100px) translateX(50px) scale(1.2) rotate(90deg);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translateY(50px) translateX(-50px) scale(0.9) rotate(270deg);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes float-rotate-5 {
+            0%, 100% {
+                transform: rotate(0deg) translateX(0) scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: rotate(180deg) translateX(150px) scale(1.6);
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes float-rotate-6 {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            33% {
+                transform: translate(70px, -70px) scale(1.3) rotate(120deg);
+                opacity: 0.6;
+            }
+            66% {
+                transform: translate(-70px, 70px) scale(0.7) rotate(240deg);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translate(0, 0) scale(1) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes float-rotate-7 {
+            0%, 100% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(60px, 80px) scale(1.1) rotate(180deg);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes float-rotate-8 {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+                opacity: 0.4;
+            }
+            25% {
+                transform: translate(-50px, -60px) scale(1.2) rotate(90deg);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translate(50px, 60px) scale(0.8) rotate(270deg);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(0, 0) scale(1) rotate(360deg);
+                opacity: 0.4;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+
+    <!-- Enhanced Navigation Bar -->
+    <nav class="header-glow fixed top-0 w-full bg-slate-900/98 backdrop-blur-lg shadow-2xl z-50 border-b-2 border-blue-500/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-20">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="text-3xl font-bold logo-pulse">
+                    <span class="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-700 bg-clip-text text-transparent drop-shadow-lg"></span>
+                </a>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link nav-item-hover text-slate-200 hover:text-blue-400 font-semibold text-lg">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <a href="skills.html" class="nav-link nav-item-hover active text-slate-200 hover:text-blue-400 font-semibold text-lg">
+                        <i class="fas fa-code mr-2"></i>Skills
+                    </a>
+                    <a href="education.html" class="nav-link nav-item-hover text-slate-200 hover:text-blue-400 font-semibold text-lg">
+                        <i class="fas fa-graduation-cap mr-2"></i>Education
+                    </a>
+                    <a href="projects.html" class="nav-link nav-item-hover text-slate-200 hover:text-blue-400 font-semibold text-lg">
+                        <i class="fas fa-briefcase mr-2"></i>Projects
+                    </a>
+                    <a href="publications.html" class="nav-link nav-item-hover text-slate-200 hover:text-blue-400 font-semibold text-lg">
+                        <i class="fas fa-book mr-2"></i>Publications
+                    </a>
+                    <a href="contact.html" class="nav-link nav-item-hover text-slate-200 hover:text-blue-400 font-semibold text-lg">
+                        <i class="fas fa-envelope mr-2"></i>Contact
+                    </a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-slate-200 hover:text-blue-400">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-20 right-0 h-full w-64 bg-slate-900 shadow-xl">
+            <div class="flex flex-col space-y-4 p-6">
+                <a href="index.html"
+                    class="text-slate-200 hover:text-blue-400 font-medium py-2 border-b border-slate-800">
+                    <i class="fas fa-home mr-2"></i>Home
+                </a>
+                <a href="skills.html"
+                    class="text-slate-200 hover:text-blue-400 font-medium py-2 border-b border-slate-800">
+                    <i class="fas fa-code mr-2"></i>Skills
+                </a>
+                <a href="education.html"
+                    class="text-slate-200 hover:text-blue-400 font-medium py-2 border-b border-slate-800">
+                    <i class="fas fa-graduation-cap mr-2"></i>Education
+                </a>
+                <a href="projects.html"
+                    class="text-slate-200 hover:text-blue-400 font-medium py-2 border-b border-slate-800">
+                    <i class="fas fa-briefcase mr-2"></i>Projects
+                </a>
+                <a href="publications.html"
+                    class="text-slate-200 hover:text-blue-400 font-medium py-2 border-b border-slate-800">
+                    <i class="fas fa-book mr-2"></i>Publications
+                </a>
+                <a href="contact.html"
+                    class="text-slate-200 hover:text-blue-400 font-medium py-2 border-b border-slate-800">
+                    <i class="fas fa-envelope mr-2"></i>Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="relative py-20 pt-32 px-4 sm:px-8 lg:px-20 overflow-hidden min-h-screen">
+        <!-- Rotating Floating Boxes Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <!-- Large boxes -->
+            <div class="bubble w-32 h-32 absolute top-10 left-10"
+                style="animation: float-rotate-1 12s ease-in-out infinite;"></div>
+            <div class="bubble w-24 h-24 absolute top-40 right-20"
+                style="animation: float-rotate-2 10s ease-in-out infinite 1s;"></div>
+            <div class="bubble w-36 h-36 absolute top-1/2 right-10 opacity-25"
+                style="animation: float-rotate-1 14s ease-in-out infinite 2.5s;"></div>
+
+            <!-- Medium boxes -->
+            <div class="bubble w-20 h-20 absolute top-1/3 left-1/3"
+                style="animation: float-rotate-6 8s ease-in-out infinite 0.5s;"></div>
+            <div class="bubble w-16 h-16 absolute bottom-32 left-1/4"
+                style="animation: float-rotate-3 7s ease-in-out infinite 2s;"></div>
+            <div class="bubble w-28 h-28 absolute bottom-40 left-1/2"
+                style="animation: float-rotate-5 9s linear infinite 3s;"></div>
+
+            <!-- Small boxes -->
+            <div class="bubble w-12 h-12 absolute bottom-20 right-40 opacity-40"
+                style="animation: float-rotate-3 11s ease-in-out infinite 4s;"></div>
+            <div class="bubble w-10 h-10 absolute top-20 left-1/2 opacity-50"
+                style="animation: float-rotate-8 8s ease-in-out infinite 0.5s;"></div>
+            <div class="bubble w-14 h-14 absolute bottom-1/4 left-1/5 opacity-40"
+                style="animation: float-rotate-7 10s ease-in-out infinite 3s;"></div>
+            <div class="bubble w-10 h-10 absolute top-2/3 right-1/4 opacity-45"
+                style="animation: float-rotate-6 9.5s ease-in-out infinite 2.8s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="inline-block mb-4">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-2xl flex items-center justify-center shadow-2xl transform hover:rotate-12 transition-transform">
+                        <i class="fas fa-tools text-4xl text-white"></i>
+                    </div>
+                </div>
+                <h2 class="text-5xl sm:text-6xl font-black text-white mb-4" style="font-family: 'Space Grotesk', sans-serif;">
+                    Tech Arsenal
+                </h2>
+                <p class="text-xl text-slate-400">Technologies and tools I use to bring ideas to life</p>
+            </div>
+
+            <!-- Category Tags -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <button class="category-tag px-8 py-3 rounded-full text-slate-200 font-semibold text-base lg:text-lg">
+                    <i class="fas fa-code mr-2"></i>Languages
+                </button>
+                <button class="category-tag px-8 py-3 rounded-full text-slate-200 font-semibold text-base lg:text-lg">
+                    <i class="fas fa-brain mr-2"></i>ML/AI
+                </button>
+                <button class="category-tag px-8 py-3 rounded-full text-slate-200 font-semibold text-base lg:text-lg">
+                    <i class="fas fa-chart-line mr-2"></i>Analytics
+                </button>
+                <button class="category-tag px-8 py-3 rounded-full text-slate-200 font-semibold text-base lg:text-lg">
+                    <i class="fas fa-database mr-2"></i>Data
+                </button>
+                <button class="category-tag px-8 py-3 rounded-full text-slate-200 font-semibold text-base lg:text-lg">
+                    <i class="fas fa-palette mr-2"></i>Design
+                </button>
+            </div>
+
+            <!-- Tech Cards Grid - With Animations -->
+            <div class="tech-grid mb-12 max-w-7xl mx-auto">
+                <!-- Programming Languages -->
+                <div class="tech-card fade-in-up delay-1 p-6 rounded-3xl group">
+                    <div class="flex flex-col items-center text-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center mb-4 tech-icon shadow-xl icon-glow-yellow">
+                            <i class="fas fa-code text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-yellow-300 mb-2">Programming Languages</h3>
+                        <p class="text-slate-400 text-sm mb-2">Core Development</p>
+                        <span class="px-4 py-1 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-full text-white text-sm font-semibold shadow-lg">Expert</span>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <div class="skill-bar-fill" style="width: 95%"></div>
+                    </div>
+                    <div class="flex justify-center gap-4 flex-wrap">
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-yellow-500/30">
+                                <i class="fab fa-java text-3xl text-red-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">Java</span>
+                        </div>
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-yellow-500/30">
+                                <i class="fab fa-python text-3xl text-yellow-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Proficiency -->
+                <div class="tech-card fade-in-up delay-2 p-6 rounded-3xl group">
+                    <div class="flex flex-col items-center text-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-4 tech-icon shadow-xl icon-glow-orange">
+                            <i class="fas fa-brain text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-orange-300 mb-2">Technical Proficiency</h3>
+                        <p class="text-slate-400 text-sm mb-2">Core Computer Science</p>
+                        <span class="px-4 py-1 bg-gradient-to-r from-orange-600 to-red-600 rounded-full text-white text-sm font-semibold shadow-lg">Advanced</span>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <div class="skill-bar-fill" style="width: 85%"></div>
+                    </div>
+                    <div class="flex justify-center gap-4 flex-wrap">
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-orange-500/30">
+                                <i class="fas fa-project-diagram text-3xl text-orange-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">DSA</span>
+                        </div>
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-orange-500/30">
+                                <i class="fas fa-cubes text-3xl text-orange-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">OOP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Development -->
+                <div class="tech-card fade-in-up delay-3 p-6 rounded-3xl group">
+                    <div class="flex flex-col items-center text-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-4 tech-icon shadow-xl icon-glow-blue">
+                            <i class="fas fa-laptop-code text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-blue-300 mb-2">Web Development</h3>
+                        <p class="text-slate-400 text-sm mb-2">Frontend Technologies</p>
+                        <span class="px-4 py-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full text-white text-sm font-semibold shadow-lg">Advanced</span>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <div class="skill-bar-fill" style="width: 90%"></div>
+                    </div>
+                    <div class="flex justify-center gap-4 flex-wrap">
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-blue-500/30">
+                                <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">HTML</span>
+                        </div>
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-blue-500/30">
+                                <i class="fab fa-css3-alt text-3xl text-blue-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">CSS</span>
+                        </div>
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-blue-500/30">
+                                <i class="fab fa-js-square text-3xl text-yellow-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics -->
+                <div class="tech-card fade-in-up delay-4 p-6 rounded-3xl group">
+                    <div class="flex flex-col items-center text-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center mb-4 tech-icon shadow-xl icon-glow-teal">
+                            <i class="fas fa-chart-line text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-teal-300 mb-2">Analytics</h3>
+                        <p class="text-slate-400 text-sm mb-2">Business Intelligence</p>
+                        <span class="px-4 py-1 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-full text-white text-sm font-semibold shadow-lg">Intermediate</span>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <div class="skill-bar-fill" style="width: 80%"></div>
+                    </div>
+                    <div class="flex justify-center gap-4 flex-wrap">
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-teal-500/30">
+                                <i class="fas fa-file-excel text-3xl text-green-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">Excel</span>
+                        </div>
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-teal-500/30">
+                                <i class="fas fa-chart-bar text-3xl text-blue-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">Power BI</span>
+                        </div>
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-teal-500/30">
+                                <i class="fas fa-table text-3xl text-purple-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">Tableau</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="tech-card fade-in-up delay-5 p-6 rounded-3xl group">
+                    <div class="flex flex-col items-center text-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center mb-4 tech-icon shadow-xl icon-glow-green">
+                            <i class="fas fa-database text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-green-300 mb-2">Databases</h3>
+                        <p class="text-slate-400 text-sm mb-2">Data Management</p>
+                        <span class="px-4 py-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-full text-white text-sm font-semibold shadow-lg">Advanced</span>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <div class="skill-bar-fill" style="width: 85%"></div>
+                    </div>
+                    <div class="flex justify-center gap-4 flex-wrap">
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-green-500/30">
+                                <i class="fas fa-server text-3xl text-green-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Artificial Intelligence -->
+                <div class="tech-card fade-in-up delay-6 p-6 rounded-3xl group">
+                    <div class="flex flex-col items-center text-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center mb-4 tech-icon shadow-xl icon-glow-red">
+                            <i class="fas fa-robot text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-red-300 mb-2">Artificial Intelligence</h3>
+                        <p class="text-slate-400 text-sm mb-2">ML & Deep Learning</p>
+                        <span class="px-4 py-1 bg-gradient-to-r from-red-600 to-pink-600 rounded-full text-white text-sm font-semibold shadow-lg">Intermediate</span>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <div class="skill-bar-fill" style="width: 80%"></div>
+                    </div>
+                    <div class="flex justify-center gap-4 flex-wrap">
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-red-500/30">
+                                <i class="fas fa-brain text-3xl text-red-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">ML</span>
+                        </div>
+                        <div class="flex flex-col items-center group/item">
+                            <div class="w-14 h-14 rounded-xl bg-slate-700/50 hover:bg-slate-600/50 flex items-center justify-center mb-2 transition-all duration-300 hover:scale-110 hover:shadow-lg border border-red-500/30">
+                                <i class="fas fa-network-wired text-3xl text-red-400"></i>
+                            </div>
+                            <span class="text-slate-300 text-sm font-semibold">Deep Learning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="mt-16 text-center">
+                <div class="inline-flex flex-wrap gap-4 justify-center">
+                    <a href="projects.html" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                        <i class="fas fa-rocket mr-2"></i>View Projects
+                    </a>
+                    <a href="education.html" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-slate-600 hover:border-blue-500">
+                        <i class="fas fa-graduation-cap mr-2"></i>My Education
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 px-4 sm:px-8 lg:px-20">
+        <div class="max-w-7xl mx-auto text-center text-slate-400">
+            <p>&copy; 2025 MOhammad Ibrahim Baig. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="hover:text-blue-400 transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="hover:text-blue-400 transition-colors">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="#" class="hover:text-blue-400 transition-colors">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-bar-fill');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0%';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const techSection = document.getElementById('tech-stack');
+        if (techSection) {
+            observer.observe(techSection);
+        }
+
+        // Category filter functionality
+        const categoryTags = document.querySelectorAll('.category-tag');
+        const techCardsAll = document.querySelectorAll('.tech-card');
+
+        categoryTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Toggle active state
+                categoryTags.forEach(t => t.classList.remove('bg-blue-600'));
+                tag.classList.add('bg-blue-600');
+                
+                // Simple filter animation
+                techCardsAll.forEach(card => {
+                    card.style.opacity = '0.3';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
